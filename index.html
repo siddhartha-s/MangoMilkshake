@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title> testing geolocation </title>
+  </head>
+  <body>
+    <p> Some content </p>
+    <button onclick="navigator.geolocation.getCurrentPosition(function(position) {
+	console.log(position);
+	checkIfChanged(position);
+    });"> Check In </button>
+    <script src="scratch.js"></script>
+  </body>
+</html>
