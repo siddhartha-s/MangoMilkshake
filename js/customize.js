@@ -26,11 +26,19 @@ function do_something(latitude,longitude,user,activity){
     });
 }
 
+var modal = document.getElementById('addPlaceModal');
+
 function mmNewEntryValidation() {
 	var user = window.localStorage.getItem('CurrentUser');
 	var activity = document.getElementById('mmActivity').value;
 	var loc = document.getElementById('mmLocation').value;
 
+	if (activity == "")
+	{
+		alert("please enter what you're doing");
+		return;
+	}
+	
 	if (loc == "") {
 		navigator.geolocation.getCurrentPosition(function(position) {
   	do_something(position.coords.latitude, position.coords.longitude,user,activity);
@@ -38,6 +46,13 @@ function mmNewEntryValidation() {
 	}else{
 		createCard(user, activity, loc);
 	}
+	
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
 function createCard(user, activity, loc) {
